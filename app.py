@@ -41,8 +41,8 @@ def get_text_chunks(text):
 
 def get_vector_store(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vector_store = FAISS.from_texts(text_chunks, embedding= embeddings)
-    vector_store.save_local("faiss_index")
+    st.session_state.vector_store = FAISS.from_texts(text_chunks, embedding= embeddings)
+    st.session_state.vector_store.save_local("faiss_index")
 
 def get_conversational_chain():
     prompt_template = """
@@ -173,6 +173,8 @@ def main():
                 raw_text = get_pdf_text(pdf_docs)
                 if raw_text:
                     text_chunks = get_text_chunks(raw_text)
+                    if "vector_store" not in st.session_state:
+                        st.session_state.vector_store = None
                     get_vector_store(text_chunks)
                     st.success("Done")
                 else:
