@@ -77,13 +77,13 @@ def user_input(user_question):
         # Display user input with a human icon and styled background
         st.markdown(f'<div style="display: flex; align-items: center; margin-bottom: 20px;">'
                     f'<img src="https://img.icons8.com/ios-filled/50/000000/user.png" style="width: 30px; height: 30px; margin-right: 10px;" />'
-                    f'<div style="padding: 10px; background-color: #f0f0f0; border-radius: 10px; width: auto; max-width: 80%;">{user_question}</div>'
+                    f'<div style="padding: 10px; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; width: auto; max-width: 80%; color: white;">{user_question}</div>'
                     f'</div>', unsafe_allow_html=True)
 
         # Display bot response with a robot icon and styled background
         st.markdown(f'<div style="display: flex; align-items: center; margin-bottom: 20px;">'
                     f'<img src="https://img.icons8.com/ios-filled/50/000000/robot.png" style="width: 30px; height: 30px; margin-right: 10px;" />'
-                    f'<div style="padding: 10px; background-color: #e0e0e0; border-radius: 10px; width: auto; max-width: 80%;">{response["output_text"]}</div>'
+                    f'<div style="padding: 10px; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; width: auto; max-width: 80%; color: white;">{response["output_text"]}</div>'
                     f'</div>', unsafe_allow_html=True)
 
         # Store the question and response in session state to avoid re-execution
@@ -99,7 +99,7 @@ def user_input(user_question):
             st.error(f"An error occurred while processing the user input: {str(e)}")
 
 def main():
-    st.set_page_config("Polylogue")
+    st.set_page_config("Dossier-Chat")
     st.markdown("""
     <h1 style="color: #4CAF50; text-align: center;">
         Dossier Chat 
